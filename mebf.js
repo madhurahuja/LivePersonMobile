@@ -77,14 +77,10 @@ function onReady() {
     });
 
     LPMobile.on('chatDisabled', function () {
-        //debugger;
-        document.getElementById('agentStatus').innerHTML='Offline';
         mixpanel.track("chatDisabled")
     });
 
     LPMobile.on('chatEnabled', function () {
-        //debugger;
-        document.getElementById('agentStatus').innerHTML='Online!';
         mixpanel.track("chatEnabled")
     });
 
