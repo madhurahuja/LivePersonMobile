@@ -7,11 +7,24 @@
         </title>
         <meta name="viewport" content="user-scalable=0, width=device-width, initial-scale=1.0,  minimum-scale=1.0, maximum-scale=1.0">
         <script type="text/javascript" src="mebf.js"></script>
+        <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.js"></script>
 
 
         <script type="text/javascript">
             var options = {
-                onReady: window.onReady
+                onReady: window.onReady,
+                app_id:"88310755",
+                // onChatDisabled:function(){
+                //   alert("Chat has been disabled!");
+                // },
+                // onChatEnabled: function(){
+                //   alert("Chat has been enabled!");
+                // },
+                extras :function(){
+                  var extras={"bale":"balle","shava":"shava"};
+                  return extras;
+                },
+                chatDisabled : true
             };
 
              /* LP Mobile JS Configuration */
@@ -128,8 +141,12 @@
       </head>
 
         <body>
+          <form>
+            <input type="button" id="13560599-mobile-MEBF-chatButton" value="Chat Button">
+          </form>
             <li>
-                <a href="#/support" onclick="LPMobile.beginChat('13560599', 'mobile-MEBF')">Chat 13560599</a>
+
+                <a href="#/support" onclick="LPMobile.beginChat('13560599', 'mobile-MEBF')">Chat 13560599 is <span id="agentStatus"></span></a>
                 <!-- <a href="#/support" onclick="LPMobile.beginChat('74037273', 'Gigapower-Online-Back-Office')">Chat 74037273</a> -->
 
 

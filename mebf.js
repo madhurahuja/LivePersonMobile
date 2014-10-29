@@ -42,24 +42,13 @@ e.parentNode.insertBefore(a, e)
 mixpanel.init("0d56da8c63a83cc4ea6e70c369a98596");
 <!-- end Mixpanel -->
 
-var requestChatInput={
-  "customVariables":{
-    "x1":1,
-    "x2":2
-  },
-  "a2aInfo":{
-    "remoteSiteId" : "test1",
-    "remoteDomain" : "test2",
-     "sessIdParam" : "test3",
-    "eventId" : "test4",
-    "sourceSiteId" : "test5",
-    "remoteSkillName" : "test6",
-    "identifier" : "test7"
-  }
-}
+
 function chatButtonState(acct, skill) {
+
     var button = document.getElementById(acct + "-" + skill + "-chatButton");
+
     if (button) {
+        // //debugger;
         if (LPMobile.getEnabled(acct, skill) == 1) {
             $(button).show();
             LPMobile.setInvitationShown(acct, skill);
@@ -81,6 +70,18 @@ function onReady() {
     LPMobile.on("enabledChange", function (o) {
         chatButtonState(o.account, o.skill);
         mixpanel.track("enabledChange")
+    });
+
+    LPMobile.on('chatDisabled', function () {
+        //debugger;
+        document.getElementById('agentStatus').innerHTML='Offline';
+        mixpanel.track("chatDisabled")
+    });
+
+    LPMobile.on('chatEnabled', function () {
+        //debugger;
+        document.getElementById('agentStatus').innerHTML='Online!';
+        mixpanel.track("chatEnabled")
     });
 
     LPMobile.on('visitStart', function () {
@@ -181,5 +182,8 @@ function onReady() {
       //debugger;
         mixpanel.track("offlineSurveyShow")
     });
+
+
+
 
 }
