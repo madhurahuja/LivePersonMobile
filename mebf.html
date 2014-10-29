@@ -13,32 +13,31 @@
         <script type="text/javascript">
             var options = {
                 onReady: window.onReady,
-                app_id:"88310755",
-                // onChatDisabled:function(){
-                //   alert("Chat has been disabled!");
-                // },
-                // onChatEnabled: function(){
-                //   alert("Chat has been enabled!");
-                // },
                 extras :function(){
-                  var extras={"bale":"balle","shava":"shava"};
+                  var extras={"Data1":"Value1","Data2":"Value2"};
                   return extras;
-                },
-                chatDisabled : true
+                }
             };
 
-             /* LP Mobile JS Configuration */
-
+            /* LP Mobile JS Configuration */
             var _LP_CFG_ = {
-
                 log_level: 1,
                 //used only for integration, not production
                 options: options
-
             };
-
-             /* End of Configuration */
+           /* End of Configuration */
         </script>
+        <style>
+          .online{
+              background: #ccc url('online.png') no-repeat right;
+              padding-right:20px;
+          }
+
+          .offline{
+              background: #ccc url('offline.png') no-repeat right;
+              padding-right:20px;
+          }
+        </style>
         <!-- BEGIN LivePerson Monitor. -->
         <script type="text/javascript">
             window.lpTag = window.lpTag || {};
@@ -142,15 +141,8 @@
 
         <body>
           <form>
-            <input type="button" id="13560599-mobile-MEBF-chatButton" value="Chat Button">
+            <input type="button" id="13560599-mobile-MEBF-chatButton" class="online" value="Live Person" onclick="LPMobile.beginChat('13560599', 'mobile-MEBF')">
           </form>
-            <li>
-
-                <a href="#/support" onclick="LPMobile.beginChat('13560599', 'mobile-MEBF')">Chat 13560599 is <span id="agentStatus"></span></a>
-                <!-- <a href="#/support" onclick="LPMobile.beginChat('74037273', 'Gigapower-Online-Back-Office')">Chat 74037273</a> -->
-
-
-            </li>
         </body>
 
 </html>

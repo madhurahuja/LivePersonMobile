@@ -50,12 +50,16 @@ function chatButtonState(acct, skill) {
     if (button) {
         // //debugger;
         if (LPMobile.getEnabled(acct, skill) == 1) {
-            $(button).show();
+            $(button).prop("disabled",false);
+            $(button).removeClass("offline");
+            $(button).addClass("online");
             LPMobile.setInvitationShown(acct, skill);
             LPMobile.reportEvent(acct + "-" + skill + '-Mobile-Buttton', "1");
             console.log('added visibility. agent online', acct, skill);
         } else {
-            $(button).hide();
+            $(button).prop("disabled",true);
+            $(button).removeClass("online");
+            $(button).addClass("offline");
             LPMobile.reportEvent(acct + "-" + skill + '-Mobile-Buttton', "0");
             console.log('agent offline/hidden', acct, skill);
         };
