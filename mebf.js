@@ -42,6 +42,17 @@ e.parentNode.insertBefore(a, e)
 mixpanel.init("0d56da8c63a83cc4ea6e70c369a98596");
 <!-- end Mixpanel -->
 
+//isDebugEnabled controls the entire site.
+var isDebugEnabled = true;
+
+function debug(msg, level) {
+    if (window.isDebugEnabled) {
+        var d = new Date();
+        level = level || 'info';
+        console.log(level + ' - [' + d.getFullYear() + "-" + (d.getMonth() + 1) + "-" + d.getDay() + " | " + d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds() +
+            "] " + '- ' + msg);
+    }
+};
 
 function chatButtonState(acct, skill) {
 
@@ -69,6 +80,46 @@ function chatButtonState(acct, skill) {
     };
 }
 
+var syncParamWithLP = function(element) {
+        debug("sync Param with LP called");
+        var elementText = $(element).siblings("span").text();
+        var index = $scope.getChannelIndex(elementText);
+        debug("ME_DisplayName_channels ------------------- start of section -------------------------")
+        debug("The Index of channel is - " + index + " & the elementText is - " + elementText);
+        if (element.checked) {
+            LPMobile.reportEvent("ME_DisplayName_channels " + index, elementText);
+            debug("--------------> Event for ME_DisplayName_channels " + index +" : "+elementText +" fired!")
+            debug("ME_DisplayName_channels " + index + " is set to " + elementText);
+            
+        } else {
+            LPMobile.reportEvent("ME_DisplayName_channels " + index, "-");
+            debug("--------------> Event for ME_DisplayName_channels " + index +" : Blank fired!")
+            debug("ME_DisplayName_channels " + index + " is set to 'Blank'. (The field name was-" + elementText+")");
+        }
+        debug("mebf_monthlyPrice for agent console is - "+mebf_monthlyPrice);
+    	LPMobile.reportEvent("mebf_monthlyPrice",mebf_monthlyPrice);
+    	debug("--------------> Event for mebf_monthlyPrice fired!")
+        debug("ME_DisplayName_channels ------------------- end of section -------------------------")
+        
+    };
+
+var syncParamsWithLP = function() {
+        debug("sync Params with LP called");
+        $("input[type=checkbox]").each(function(index, element) {
+            var elementText = $(element).siblings("span").text();
+            if (element.checked) {
+                LPMobile.reportEvent("ME_DisplayName_channels " + index, elementText);
+                debug("ME_DisplayName_channels " + index + " is set to " + elementText);
+            } else {
+                LPMobile.reportEvent("ME_DisplayName_channels " + index, "-");
+                debug("ME_DisplayName_channels " + index + " is set to 'Blank'. (The field name was-" + elementText+")");
+            }
+        });
+        debug("ME_DisplayName_channels ------------------- end of section -------------------------")
+        debug("mebf_monthlyPrice for agent console is - "+mebf_monthlyPrice);
+    	LPMobile.reportEvent("mebf_monthlyPrice",mebf_monthlyPrice);
+    };
+    
 function onReady() {
     console.log("**********ONREADY*************");
     LPMobile.on("enabledChange", function (o) {
