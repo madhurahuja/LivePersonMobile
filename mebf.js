@@ -96,9 +96,7 @@ var syncParamWithLP = function(element) {
             debug("--------------> Event for ME_DisplayName_channels " + index +" : Blank fired!")
             debug("ME_DisplayName_channels " + index + " is set to 'Blank'. (The field name was-" + elementText+")");
         }
-        debug("mebf_monthlyPrice for agent console is - "+mebf_monthlyPrice);
-    	LPMobile.reportEvent("mebf_monthlyPrice",mebf_monthlyPrice);
-    	debug("--------------> Event for mebf_monthlyPrice fired!")
+       
         debug("ME_DisplayName_channels ------------------- end of section -------------------------")
         
     };
@@ -116,8 +114,7 @@ var syncParamsWithLP = function(element) {
             }
         });
         debug("ME_DisplayName_channels ------------------- end of section -------------------------")
-        debug("mebf_monthlyPrice for agent console is - "+mebf_monthlyPrice);
-    	LPMobile.reportEvent("mebf_monthlyPrice",mebf_monthlyPrice);
+       
     };
  var syncWithLP=function(element){
      var approach=$('input[name=approach]:checked').val();
