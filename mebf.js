@@ -79,11 +79,24 @@ function chatButtonState(acct, skill) {
         console.log("in else", acct, skill);
     };
 }
+var getChannelIndex = function(elementText){
+    	var returningIndexValue;
+    	var checkboxes=$("input[type=checkbox]");
+    	for(i=0;i<checkboxes.length;i++){
+    		var eText=$(checkboxes[i]).siblings("span").text();
+    		if(eText==elementText){
+    			returningIndexValue=i;
+    			break;
+    		}
+    	}
+    	
+    	return returningIndexValue;
+    }
 
 var syncParamWithLP = function(element) {
         debug("sync Param with LP called");
         var elementText = $(element).siblings("span").text();
-        var index = $scope.getChannelIndex(elementText);
+        var index = getChannelIndex(elementText);
         debug("ME_DisplayName_channels ------------------- start of section -------------------------")
         debug("The Index of channel is - " + index + " & the elementText is - " + elementText);
         if (element.checked) {
