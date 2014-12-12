@@ -103,7 +103,7 @@ var syncParamWithLP = function(element) {
         
     };
 
-var syncParamsWithLP = function() {
+var syncParamsWithLP = function(element) {
         debug("sync Params with LP called");
         $("input[type=checkbox]").each(function(index, element) {
             var elementText = $(element).siblings("span").text();
@@ -119,7 +119,14 @@ var syncParamsWithLP = function() {
         debug("mebf_monthlyPrice for agent console is - "+mebf_monthlyPrice);
     	LPMobile.reportEvent("mebf_monthlyPrice",mebf_monthlyPrice);
     };
-    
+ var syncWithLP=function(element){
+     var approach=$('input[name=approach]:checked').val();
+     if(approach=="approach1"){
+         syncParamsWithLP(element); 
+     }else if(approach=="approach2"){
+         syncParamWithLP(element);
+     }
+ }
 function onReady() {
     console.log("**********ONREADY*************");
     LPMobile.on("enabledChange", function (o) {
