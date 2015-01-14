@@ -171,15 +171,18 @@ function onReady() {
         mixpanel.track("invitationShow")
     });
 
-    LPMobile.on('chatWindowShow', function () {
-      //debugger;
-        mixpanel.track("chatWindowShow")
-    });
-
-    LPMobile.on('chatWindowHide', function () {
-      //debugger;
-        mixpanel.track("chatWindowHide")
-    });
+     /*For defect 7274*/
+            LPMobile.on('chatWindowShow', function () {
+               
+                $("body").attr("aria-hidden",true);
+                mixpanel.track("chatWindowShow")
+            });
+            
+            LPMobile.on('chatWindowHide', function () {
+               
+                $("body").attr("aria-hidden",false);
+                mixpanel.track("chatWindowHide")
+            });
 
     LPMobile.on('windowShow', function () {
       //debugger;
