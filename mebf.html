@@ -8,6 +8,25 @@
         <meta name="viewport" content="user-scalable=0, width=device-width, initial-scale=1.0,  minimum-scale=1.0, maximum-scale=1.0">
         <script type="text/javascript" src="mebf.js"></script>
         <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.js"></script>
+
+
+        <script type="text/javascript">
+            var options = {
+                onReady: window.onReady,
+                extras :function(){
+                  var extras={"Data1":"Value1","Data2":"Value2"};
+                  return extras;
+                }
+            };
+
+            /* LP Mobile JS Configuration */
+            var _LP_CFG_ = {
+                log_level: 1,
+                //used only for integration, not production
+                options: options
+            };
+           /* End of Configuration */
+        </script>
         <style>
           .online{
               background: #ccc url('online.png') no-repeat right;
@@ -17,10 +36,6 @@
           .offline{
               background: #ccc url('offline.png') no-repeat right;
               padding-right:20px;
-          }
-          div{
-              margin:5px;
-              padding:5px;
           }
         </style>
         <!-- BEGIN LivePerson Monitor. -->
@@ -122,30 +137,11 @@
             }
         </script>
         <!-- END LivePerson Monitor. -->
-        
-         <script type="text/javascript">
--            var options = {
--                onReady: window.onReady,
--                extras :function(){
--                  var extras={"Data1":"Value1","Data2":"Value2"};
--                  return extras;
--                }
--            };
--
--            /* LP Mobile JS Configuration */
--            var _LP_CFG_ = {
--                log_level: 1,
--                //used only for integration, not production
--                options: options
--            };
-        </script>
-        <script type="text/javascript" src="https://tag.look.io/lp_lib/liveperson-mobile.js"></script>
       </head>
 
         <body>
           <form>
-            
-            <div><input type="button" id="13560599-mobile-MEBF-chatButton" class="online" value="Live Person" onclick="LPMobile.beginChat('13560599', 'mobile-MEBF')"></div>
+            <input type="button" id="13560599-mobile-MEBF-chatButton" class="online" value="Live Person" onclick="LPMobile.beginChat('13560599', 'mobile-MEBF')">
             
             <!--<div>Please star the chat and select the approach before proceeding-</div>
             
@@ -161,6 +157,7 @@
             <li><input type="checkbox" value="5" onClick="syncWithLP(this)"><span>Checkbox 5</span></li>
             <li><input type="checkbox" value="6" onClick="syncWithLP(this)"><span>Checkbox 6</span></li>
             <li><input type="checkbox" value="7" onClick="syncWithLP(this)"><span>Checkbox 7</span></li>-->
+
           </form>
         </body>
 
