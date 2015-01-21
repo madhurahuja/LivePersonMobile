@@ -122,6 +122,23 @@
             }
         </script>
         <!-- END LivePerson Monitor. -->
+        
+         <script type="text/javascript">
+-            var options = {
+-                onReady: window.onReady,
+-                extras :function(){
+-                  var extras={"Data1":"Value1","Data2":"Value2"};
+-                  return extras;
+-                }
+-            };
+-
+-            /* LP Mobile JS Configuration */
+-            var _LP_CFG_ = {
+-                log_level: 1,
+-                //used only for integration, not production
+-                options: options
+-            };
+        </script>
         <script type="text/javascript" src="https://tag.look.io/lp_lib/liveperson-mobile.js"></script>
       </head>
 
