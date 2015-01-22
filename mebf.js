@@ -70,12 +70,14 @@ function onReady() {
 
      /*For defect 7274*/
     LPMobile.on('chatWindowShow', function () {
-        //$("body").attr("aria-hidden",true);
+        $("body").attr("aria-hidden",true);
+        $("iframe").attr("aria-hidden",false);
         console.log("chatWindowShow")
     });
             
     LPMobile.on('chatWindowHide', function () {
-        //$("body").attr("aria-hidden",false);
+        $("body").attr("aria-hidden",false);
+        $("iframe").attr("aria-hidden",true);
         console.log("chatWindowHide")
     });
 
